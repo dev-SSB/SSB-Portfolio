@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom'
-import userImage from "../02-Home-Section/user1.jpeg";
+import userImage from "./user1.jpeg";
 import picImage from "../02-Home-Section/pic1.jpeg";
 
 const Home = () => {  
