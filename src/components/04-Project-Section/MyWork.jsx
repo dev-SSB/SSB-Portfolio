@@ -1,6 +1,6 @@
 import React from 'react'
-import p2 from "../04-Project-Section/p2.png"
-import p3 from "../04-Project-Section/p3.png"
+import p2 from "../../components/04-Project-Section/p2.png"
+import p3 from "../../components/04-Project-Section/p3.png"
 
 const MyWork = () => {
 
