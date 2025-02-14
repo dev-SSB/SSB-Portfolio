@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const Skills = () => {
-
+  
   const [showAll, setShowAll] = useState(false);
 
   const skillsData = [
