@@ -9,7 +9,7 @@ const Certifications = () => {
     {name:"Data Structures Using C++", comp:"Udemy"},
   ];
   return (
-    <div className='flex flex-col gap-5 sm:gap-8 lg:gap-6'> 
+    <div className='flex flex-col gap-5 sm:gap-8 lg:gap-6 mt-10'> 
         <h1 className='text-center text-3xl sm:text-6xl font-semibold'>CERTIFICATION</h1>
 
         <div className='flex flex-col justify-center items-center gap-5 sm:gap-4 lg:gap-6 bg-[#ffa400] w-full lg:w-fit mx-auto sm:p-5 lg:p-8'>

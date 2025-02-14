@@ -1,5 +1,8 @@
 
 import { Link } from 'react-router-dom'
+import pic1 from "../../components/02-Home-Section/pic1.jpeg";
+import user1 from "../../components/02-Home-Section/user1.jpeg";
+
 
 const Home = () => {  
 
@@ -62,8 +65,8 @@ const Home = () => {
 
       <section className='flex flex-col gap-3 justify-end'>
         <div className='flex flex-col sm:flex-row justify-center items-center gap-5'>
-          <img src="../02-Home-Section/pic1.jpeg" alt="img" className='hidden sm:block rounded-2xl object-cover h-64 sm:h-80 w-full sm:w-1/2' />
-          <img src="../02-Home-Section/user1.jpeg" alt="img" className='rounded-2xl object-cover h-64 sm:h-80 w-full sm:w-1/2' />
+          <img src={user1} alt="img" className='hidden sm:block rounded-2xl object-cover h-64 sm:h-80 w-full sm:w-1/2' />
+          <img src={pic1} alt="img" className='rounded-2xl object-cover h-64 sm:h-80 w-full sm:w-1/2' />
         </div>
 
         <div className='flex flex-col sm:flex-row sm:justify-between gap-4 mt-5'>

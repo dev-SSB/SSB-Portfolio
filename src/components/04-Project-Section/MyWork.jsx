@@ -1,10 +1,12 @@
 import React from 'react'
+import p2 from "../../components/04-Project-Section/p2.png"
+import p3 from "../../components/04-Project-Section/p3.png"
 
 const MyWork = () => {
 
     const Some_of_My_Work_Data = [
         {
-          imgLocation:"../src/images/p2.png",
+          imgLocation:p2,
           header:"Tech Blog Platform",
           skillsUsed:["React", "Tailwind CSS", "JavaScript", "Context API", "Local Storage"],
           val:[
@@ -15,7 +17,7 @@ const MyWork = () => {
           deployLink:"https://dev-ssb.github.io/Blog-App/",
         },
         {
-          imgLocation:"../src/images/p3.png",
+          imgLocation:p3,
           header:"Task Manager App",
           skillsUsed:["React", "Tailwind CSS", "JavaScript", "State Management", "Local Storage"],
           val:[
