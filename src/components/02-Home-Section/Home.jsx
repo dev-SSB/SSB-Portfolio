@@ -1,7 +1,5 @@
 
 import { Link } from 'react-router-dom'
-import pic1 from "../../components/02-Home-Section/pic1.jpeg";
-import user1 from "../../components/02-Home-Section/user1.jpeg";
 
 
 const Home = () => {  
