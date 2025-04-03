@@ -13,14 +13,14 @@ const OtherProject = () => {
       githubLink:"https://github.com/dev-SSB/Blog-App",
     },
     {
-      header:"Task Manager App",
-      Info:"",
-      githubLink:"https://github.com/dev-SSB/Todo-App",
-    },
-    {
       header:"Portfolio",
       Info:"",
       githubLink:"",
+    },
+    {
+      header:"Task Manager App",
+      Info:"",
+      githubLink:"https://github.com/dev-SSB/Todo-App",
     },
     {
       header:"Dribbble Landing Page",
@@ -60,7 +60,7 @@ const OtherProject = () => {
   ];
   
   // Show only first 4 projects when showAll is false
-  const visibleProjects = showAll ? Other_Project_Data : Other_Project_Data.slice(0, 2);
+  const visibleProjects = showAll ? Other_Project_Data : Other_Project_Data.slice(0, 3);
 
 
   return (

@@ -1,54 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
+  const form = useRef();
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
-  // Handle input changes
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Handle form submission
-  const handleSubmitForm = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message) {
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 3000); // Reset after 3 sec
-      setFormData({ name: '', email: '', message: '' });
-    }
+  
+    emailjs
+      .sendForm(
+        "service_qxce62o",     // Your EmailJS Service ID
+        "template_fq6mhpb",    // Your EmailJS Template ID
+        form.current,
+        "MMP4ii2TNDHPG5iU4"    // Your EmailJS Public Key
+      )
+      .then(
+        (result) => {
+          console.log("Success:", result.text);
+          setSubmitted(true);
+          setError(false);
+          setTimeout(() => setSubmitted(false), 4000); // Hide message after 4 sec
+          form.current.reset();
+        },
+        (error) => {
+          console.error("Error:", error);
+          setError(true);
+        }
+      );
   };
 
   return (
-    <section className="px-5 sm:px-8 lg:px-10 py-5 mt-3 sm:mt-7 lg:mt-5 font-mono ">
-      <div className="flex flex-col  justify-center gap-4 sm:gap-8 lg:gap-5">
+    <section className="px-5 sm:px-8 lg:px-10 py-5 mt-3 sm:mt-7 lg:mt-5 font-mono">
+      <div className="flex flex-col justify-center gap-4 sm:gap-8 lg:gap-5">
         <h1 className="text-center text-3xl sm:text-6xl font-semibold">GET IN TOUCH</h1>
 
-        <p className="text-center sm:w-full lg:w-1/2 m-auto sm:text-2xl lg:text-xl text-gray-400">Have a question, project idea, or just want to say hello? Feel free to reach out—I’d love to hear from you! Fill out the form below, and I’ll get back to you as soon as possible.</p>
+        <p className="text-center sm:w-full lg:w-1/2 m-auto sm:text-2xl lg:text-xl text-gray-400">
+          Have a question, project idea, or just want to say hello? Feel free to reach out—I’d love to hear from you!
+        </p>
 
         <div className="flex flex-col justify-center items-center mt-10 w-full">
-          <form onSubmit={handleSubmitForm} className="flex flex-col gap-8 lg:gap-6 sm:w-full lg:w-1/2 ">
+          <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-8 lg:gap-6 sm:w-full lg:w-1/2">
             <div className="flex gap-10">
               <input
                 type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Name"
+                name="user_name"
+                placeholder="Your Name"
                 required
                 className="border-b w-1/2 focus:outline-none sm:text-2xl lg:text-xl"
               />
               <input
                 type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email"
+                name="user_email"
+                placeholder="Your Email"
                 required
                 className="border-b w-1/2 focus:outline-none sm:text-2xl lg:text-xl"
               />
@@ -56,10 +61,8 @@ const Contact = () => {
 
             <textarea
               name="message"
-              value={formData.message}
-              onChange={handleChange}
+              placeholder="Your Message"
               required
-              placeholder="Message"
               className="border-b w-full focus:outline-none sm:text-2xl lg:text-xl"
             ></textarea>
 
@@ -70,21 +73,24 @@ const Contact = () => {
               Send Message
             </button>
 
-            {/* Success Message */}
-            {submitted && (
-              <p className="text-green-600 text-xl text-center font-semibold">✅ Message sent successfully!</p>
-            )}
+            {/* Success & Error Messages */}
+            {submitted && <p className="text-green-500 text-xl text-center font-semibold">✅ Message sent successfully!</p>}
+            {error && <p className="text-red-500 text-xl text-center font-semibold">❌ Error sending message. Try again!</p>}
           </form>
         </div>
 
-        <div className='flex gap-5 justify-center mt-3 sm:mt-20 lg:mt-6'>
-            <a href='https://www.linkedin.com/in/shivprasad-bodke/' className='px-4 py-1 sm:py-2 lg:py-1 border-none text-3xl sm:text-5xl lg:text-3xl text-amber-300 w-fit rounded transition delay-150 duration-300 ease-in-out hover:-translate-y-3 hover:scale-110'><i class="ri-linkedin-box-fill"></i></a>
-            <a href='https://github.com/dev-SSB' className='px-4 py-1 sm:py-2 lg:py-1 border-none text-3xl sm:text-5xl lg:text-3xl text-amber-300 w-fit rounded transition delay-150 duration-300 ease-in-out hover:-translate-y-3 hover:scale-110'><i class="ri-github-fill"></i></a>
-            <a href="mailto:shivbodke03@gmail.com" target="_blank" rel="noopener noreferrer" className='px-4 py-1 sm:py-2 lg:py-1 border-none text-3xl sm:text-5xl lg:text-3xl text-amber-300 w-fit rounded transition delay-150 duration-300 ease-in-out hover:-translate-y-3 hover:scale-110'>
-              <i class="ri-mail-line"></i>
-            </a>
+        {/* Social Links */}
+        <div className="flex gap-5 justify-center mt-3 sm:mt-20 lg:mt-6">
+          <a href="https://www.linkedin.com/in/shivprasad-bodke/" className="text-3xl text-amber-300 hover:scale-110">
+            <i className="ri-linkedin-box-fill"></i>
+          </a>
+          <a href="https://github.com/dev-SSB" className="text-3xl text-amber-300 hover:scale-110">
+            <i className="ri-github-fill"></i>
+          </a>
+          <a href="mailto:shivbodke03@gmail.com" className="text-3xl text-amber-300 hover:scale-110">
+            <i className="ri-mail-line"></i>
+          </a>
         </div>
-
       </div>
     </section>
   );

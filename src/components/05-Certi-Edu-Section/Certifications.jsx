@@ -3,6 +3,8 @@ import React from 'react'
 const Certifications = () => {
 
   const certiData = [
+    {name:"React JS", comp:"Seven Mentor Pvt.Ltd"},
+    {name:"Node JS , Express JS & Mongo DB", comp:"Seven Mentor Pvt.Ltd"},
     {name:"ReactJS", comp:"Addvic Technology"},
     {name:"Java FullStack Development", comp:"FirstBit Solutions, Pune"},
     {name:"AI-ML Training", comp:"Intel Unnati"},
